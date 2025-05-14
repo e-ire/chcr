@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+body {
+  
+  background-image: url(radio.jpg);
+  background-size: cover;
+
+.bottomright {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 10px;
+  color: #FFFFFF;
+}
+
+#slider {
+  cursor: move;
+  z-index: 5;
+  position: absolute;
+  left: 705px;
+  top: 268px;
+}
+
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div id="slider">
+  <img src="/knob.png" width=30 height=20 alt="drag me">
+</div>
+
+<div class="bottomright">TERMS AND CONDITIONS APPLY.</div>
+
+<div id="proceedbutton">
+wahwahw
+</div>
+
+<div id="staticnoise">
+  <embed src="https://www.youtube.com/watch?v=mfycQJrzXCA&t=1s" autostart="true" loop="true">
+</div>
+
+
+<script>
+// makes element draggable
+dragElement(document.getElementById("slider"));
+proceedbutton.style.display = "none";
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, newpos=705;
+  elmnt.onmousedown = dragMouseDown;
+  
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos2 = e.clientX;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos2 = e.clientX-15;
+    
+    // set the element's new position:
+    if (Math.floor(pos2)>704){
+      if (Math.floor(pos2)<906){
+        newpos = pos2;
+      }
+    }
+    
+    elmnt.style.left = newpos + "px";
+    proceedbutton.style.display = "none";
+    if (Math.floor(pos2)>750){
+      if (Math.floor(pos2)<800){
+        proceedbutton.style.display = "block";
+    }
+  }
+    
+  }
+
+  function closeDragElement() {
+    // ends dragging on mouse release
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+
+
+
+
+</script>
+
+
+</body>
